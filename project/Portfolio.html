@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akane — Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #1e2d5a;
+    --navy-mid: #2e4080;
+    --navy-light: #4a5f99;
+    --bg: #edf0f4;
+    --bg2: #e4e8ef;
+    --white: #f8f9fc;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--navy); font-family: 'DM Sans', sans-serif; overflow-x: hidden; cursor: none; }
+
+  /* CURSOR */
+  #cursor { position: fixed; width: 12px; height: 12px; background: var(--navy); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .2s, height .2s, opacity .2s; mix-blend-mode: multiply; }
+  #cursor.large { width: 60px; height: 60px; opacity: .15; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--navy); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 56px; }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo-icon { width: 36px; height: 36px; position: relative; flex-shrink: 0; }
+  .nav-logo-icon img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: opacity .25s ease; }
+  .nav-logo-icon .img-hover { opacity: 0; }
+  .nav-logo:hover .img-hover { opacity: 1; }
+  .nav-logo:hover .img-default { opacity: 0; }
+  .nav-logo-name { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 800; color: var(--bg); letter-spacing: .04em; }
+  .nav-contact { background: transparent; border: 2px solid var(--bg); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; padding: 6px 20px; border-radius: 100px; cursor: none; letter-spacing: .06em; transition: background .2s, color .2s; text-decoration: none; }
+  .nav-contact:hover { background: var(--bg); color: var(--navy); }
+
+  /* HERO */
+  #hero { height: 100vh; padding-top: 56px; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+  .marquee-wrap { position: absolute; top: 56px; left: 0; right: 0; overflow: hidden; user-select: none; }
+  .marquee-fade { animation: fadeInOnly .8s ease forwards; opacity: 0; }
+  .marquee-fade.rev { animation-delay: .15s; }
+  @keyframes fadeInOnly { to { opacity: 1; } }
+  .marquee-row { display: flex; width: max-content; animation: marquee 18s linear infinite; }
+  .marquee-row.rev { animation: marquee-rev 20s linear infinite; opacity: .35; }
+  .marquee-row span { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(80px, 12vw, 160px); line-height: .9; color: var(--navy); padding: 0 24px; white-space: nowrap; letter-spacing: -.01em; }
+  .marquee-row.rev span { color: var(--navy-light); opacity: .4; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+  .hero-center { flex: 1; display: flex; align-items: flex-end; justify-content: center; position: relative; z-index: 2; }
+  .mask-reveal-wrap { position: relative; width: 60vw; max-width: 680px; height: calc(100vh - 56px); flex-shrink: 0; display: flex; align-items: flex-end; justify-content: center; }
+  .mask-img { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); height: min(72vh, 640px); width: auto; object-fit: contain; object-position: bottom center; }
+  .mask-img-top { -webkit-mask-image: radial-gradient(circle 0px at 50% 50%, black 0%, transparent 0%); mask-image: radial-gradient(circle 0px at 50% 50%, black 0%, transparent 0%); }
+
+  /* Hero entrance */
+  .hero-enter { opacity: 0; transform: translateY(30px); animation: heroIn .9s ease forwards; }
+  .hero-enter-img { opacity: 0; animation: heroImgIn 1s ease .3s forwards; }
+  @keyframes heroIn { to { opacity: 1; transform: translateY(0); } }
+  @keyframes heroImgIn { to { opacity: 1; } }
+
+  .hero-tagline { position: absolute; bottom: 48px; left: 0; right: 0; text-align: center; z-index: 3; pointer-events: none; }
+  .hero-tagline h1 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(14px, 1.4vw, 20px); font-weight: 700; letter-spacing: .3em; color: var(--navy); text-transform: uppercase; opacity: .7; }
+  .hero-side-label { position: absolute; top: 50%; font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--navy); opacity: .45; writing-mode: vertical-rl; z-index: 3; }
+  .hero-side-label.left { left: 40px; transform: translateY(-50%) rotate(180deg); }
+  .hero-side-label.right { right: 40px; transform: translateY(-50%); }
+  .scroll-hint { position: absolute; bottom: 40px; right: 48px; display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 3; }
+  .scroll-hint span { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--navy); opacity: .5; writing-mode: vertical-rl; }
+  .scroll-line { width: 1px; height: 60px; background: var(--navy); opacity: .3; position: relative; overflow: hidden; }
+  .scroll-line::after { content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 100%; background: var(--navy); animation: scrollAnim 1.8s ease-in-out infinite; }
+  @keyframes scrollAnim { 0% { top: -100%; } 100% { top: 100%; } }
+
+  /* ABOUT */
+  #about { background: var(--bg); padding: 0; overflow: hidden; position: relative; }
+  .about-big-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(72px, 11vw, 150px); font-weight: 900; line-height: .88; letter-spacing: -.02em; color: var(--navy); text-align: center; padding: 32px 0 0; position: relative; z-index: 2; }
+  .about-stage { position: relative; display: flex; align-items: flex-end; height: 85vh; max-height: 800px; overflow: hidden; }
+  .about-left { position: relative; z-index: 3; padding: 0 0 48px 60px; width: 260px; flex-shrink: 0; display: flex; flex-direction: column; gap: 14px; align-self: flex-end; }
+  .about-name { font-family: 'Barlow Condensed', sans-serif; font-size: 60px; font-weight: 900; line-height: .9; letter-spacing: -.02em; }
+  .about-desc { font-size: 14px; line-height: 1.7; color: var(--navy-light); font-weight: 400; max-width: 220px; }
+  .about-cta { display: inline-block; background: var(--navy); color: var(--bg); font-size: 13px; font-weight: 700; letter-spacing: .08em; padding: 10px 24px; border-radius: 100px; text-decoration: none; width: fit-content; transition: opacity .2s, transform .2s; }
+  .about-cta:hover { opacity: .8; transform: scale(1.03); }
+  .about-lacrosse { width: 64px; margin-top: 4px; opacity: .7; transition: transform .4s ease; }
+  .about-lacrosse:hover { transform: scale(1.08) rotate(-3deg); }
+  .about-center-photo { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); height: 100%; width: auto; max-width: 50%; z-index: 2; pointer-events: none; filter: grayscale(1) contrast(1.05); object-fit: contain; object-position: bottom; }
+  .about-right { margin-left: auto; position: relative; z-index: 3; padding: 0 48px 28px 0; text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; align-self: flex-end; }
+  .about-tool-label { font-size: 12px; letter-spacing: .12em; color: var(--navy-light); opacity: .55; text-transform: uppercase; margin-bottom: 4px; }
+  .about-role { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(52px, 7vw, 100px); font-weight: 900; line-height: .88; letter-spacing: -.02em; text-align: right; }
+
+  /* Floating animation for about photo */
+  @keyframes floatY { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-10px); } }
+  .about-center-photo { animation: floatY 6s ease-in-out infinite; }
+
+  /* SKILLS */
+  #skills { background: var(--bg); padding: 100px 80px; }
+  .section-label { font-size: 11px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--navy-light); margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
+  .section-label::after { content: ''; display: block; height: 1px; width: 40px; background: var(--navy-light); opacity: .5; }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; }
+  .skill-card { background: var(--white); padding: 40px 36px; position: relative; overflow: hidden; transition: background .3s, transform .3s; }
+  .skill-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--navy); transform: scaleX(0); transform-origin: left; transition: transform .35s ease; }
+  .skill-card:hover { background: var(--bg2); transform: translateY(-4px); }
+  .skill-card:hover::before { transform: scaleX(1); }
+  .skill-num { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .1em; color: var(--navy-light); margin-bottom: 20px; opacity: .5; }
+  .skill-name { font-family: 'Barlow Condensed', sans-serif; font-size: 32px; font-weight: 800; line-height: 1; margin-bottom: 14px; letter-spacing: -.01em; }
+  .skill-desc { font-size: 14px; line-height: 1.65; color: var(--navy-light); font-weight: 400; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+  .skill-tag { font-size: 11px; font-weight: 600; letter-spacing: .08em; padding: 4px 10px; border: 1.5px solid var(--navy); border-radius: 100px; color: var(--navy); text-transform: uppercase; opacity: .6; }
+
+  /* SOLVE */
+  #solve { background: var(--bg2); padding: 100px 80px; }
+  .solve-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 60px; gap: 40px; }
+  .solve-headline { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(52px, 6vw, 88px); font-weight: 900; line-height: .92; letter-spacing: -.02em; max-width: 600px; }
+  .solve-sub { max-width: 280px; font-size: 15px; line-height: 1.7; color: var(--navy-light); flex-shrink: 0; font-weight: 300; }
+  .solve-list { display: flex; flex-direction: column; gap: 2px; }
+  .solve-item { background: var(--white); cursor: none; position: relative; overflow: hidden; transition: background .25s; }
+  .solve-item-header { padding: 28px 36px; display: grid; grid-template-columns: 60px 1fr auto; align-items: center; gap: 24px; }
+  .solve-item::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--navy); transform: scaleY(0); transition: transform .3s; }
+  .solve-item.open { background: var(--navy); color: var(--bg); }
+  .solve-item.open::after { transform: scaleY(1); }
+  .solve-item-num { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; color: var(--navy-light); opacity: .5; transition: color .25s, opacity .25s; }
+  .solve-item.open .solve-item-num { color: var(--bg); opacity: .4; }
+  .solve-item-title { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 800; letter-spacing: -.01em; transition: color .25s; }
+  .solve-item.open .solve-item-title { color: var(--bg); }
+  .solve-item-arrow { font-size: 22px; transition: transform .3s, color .25s; color: var(--navy-light); }
+  .solve-item.open .solve-item-arrow { transform: rotate(90deg); color: var(--bg); }
+  .solve-item-body { max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s; background: var(--navy); }
+  .solve-item.open .solve-item-body { max-height: 300px; }
+  .solve-item-body-inner { padding: 0 36px 28px 120px; display: flex; flex-direction: column; gap: 12px; }
+  .solve-item-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .solve-item-bullets li { font-size: 14px; line-height: 1.6; color: rgba(237,240,244,.75); padding-left: 16px; position: relative; }
+  .solve-item-bullets li::before { content: '—'; position: absolute; left: 0; opacity: .5; }
+  .solve-item-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--bg); color: var(--navy); font-size: 13px; font-weight: 700; letter-spacing: .08em; padding: 10px 22px; border-radius: 100px; text-decoration: none; width: fit-content; margin-top: 4px; transition: transform .2s, opacity .2s; }
+  .solve-item-cta:hover { transform: scale(1.04); opacity: .9; }
+
+  /* CONTACT */
+  #contact { position: relative; overflow: hidden; }
+  .contact-photo-section { position: relative; height: 70vh; min-height: 500px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .contact-bg { position: absolute; inset: 0; background: url('uploads/IMG_5576.JPG') center center / cover no-repeat; z-index: 0; transition: transform .1s linear; }
+  .contact-overlay { position: absolute; inset: 0; background: rgba(20,28,56,.5); z-index: 1; }
+  .contact-photo-content { position: relative; z-index: 2; text-align: center; padding: 0 40px; }
+  .contact-headline { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(60px, 9vw, 130px); font-weight: 900; line-height: .88; letter-spacing: -.02em; color: var(--bg); margin-bottom: 32px; }
+  .contact-sub { font-size: 16px; color: rgba(237,240,244,.7); max-width: 400px; margin: 0 auto 40px; line-height: 1.7; font-weight: 300; }
+  .contact-btn { display: inline-block; background: var(--bg); color: var(--navy); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 18px 52px; border-radius: 100px; text-decoration: none; transition: background .25s, transform .2s; }
+  .contact-btn:hover { background: var(--white); transform: scale(1.04); }
+
+  /* CONTACT FORM */
+  .contact-form-section { background: var(--navy); padding: 100px 80px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 60px; }
+  .form-lead { display: flex; flex-direction: column; gap: 20px; }
+  .form-lead-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(44px, 5vw, 70px); font-weight: 900; line-height: .9; letter-spacing: -.02em; color: var(--bg); }
+  .form-lead-desc { font-size: 16px; line-height: 1.7; color: rgba(237,240,244,.6); font-weight: 300; }
+  .contact-links { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 8px; }
+  .contact-link { font-size: 12px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: rgba(237,240,244,.4); text-decoration: none; transition: color .2s; }
+  .contact-link:hover { color: var(--bg); }
+  form { display: flex; flex-direction: column; gap: 20px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-field { display: flex; flex-direction: column; gap: 8px; }
+  .form-field label { font-size: 11px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: rgba(237,240,244,.4); }
+  .form-field input, .form-field textarea, .form-field select { background: rgba(255,255,255,.06); border: 1.5px solid rgba(255,255,255,.12); border-radius: 8px; padding: 14px 16px; color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 15px; outline: none; transition: border-color .2s, background .2s; cursor: none; width: 100%; }
+  .form-field input::placeholder, .form-field textarea::placeholder { color: rgba(237,240,244,.25); }
+  .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: rgba(237,240,244,.4); background: rgba(255,255,255,.1); }
+  .form-field textarea { resize: vertical; min-height: 120px; }
+  .form-field select option { background: var(--navy); color: var(--bg); }
+  .form-submit { display: inline-flex; align-items: center; gap: 10px; background: var(--bg); color: var(--navy); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .08em; padding: 16px 40px; border-radius: 100px; border: none; cursor: none; transition: transform .2s, opacity .2s; width: fit-content; }
+  .form-submit:hover { transform: scale(1.04); opacity: .9; }
+  .form-success { display: none; background: rgba(255,255,255,.08); border: 1.5px solid rgba(255,255,255,.2); border-radius: 12px; padding: 24px 28px; color: var(--bg); font-size: 15px; line-height: 1.6; }
+  .form-success.show { display: block; }
+
+  /* FOOTER */
+  footer { background: #151f3f; padding: 24px 80px; display: flex; justify-content: space-between; align-items: center; }
+  footer span { font-size: 12px; color: rgba(237,240,244,.25); letter-spacing: .06em; }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(36px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-scale { opacity: 0; transform: translateY(20px) scale(.97); transition: opacity .6s ease, transform .6s ease; }
+  .reveal-scale.visible { opacity: 1; transform: translateY(0) scale(1); }
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-icon">
+      <img class="img-default" src="uploads/IMG_4373.png" alt="logo" />
+      <img class="img-hover" src="uploads/IMG_4372.png" alt="logo hover" />
+    </div>
+    <span class="nav-logo-name">AKANE</span>
+  </a>
+  <a href="#contact" class="nav-contact">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="marquee-wrap" style="top:56px;">
+    <div class="marquee-fade">
+      <div class="marquee-row">
+        <span>AKANE</span><span>PORTFOLIO</span><span>WEB DEV</span>
+        <span>AKANE</span><span>PORTFOLIO</span><span>WEB DEV</span>
+        <span>AKANE</span><span>PORTFOLIO</span><span>WEB DEV</span>
+        <span>AKANE</span><span>PORTFOLIO</span><span>WEB DEV</span>
+      </div>
+    </div>
+  </div>
+  <div class="marquee-wrap" style="top: calc(56px + clamp(72px, 10.8vw, 144px));">
+    <div class="marquee-fade rev">
+      <div class="marquee-row rev">
+        <span>DEVELOPER</span><span>CREATIVE</span><span>BUILDER</span>
+        <span>DEVELOPER</span><span>CREATIVE</span><span>BUILDER</span>
+        <span>DEVELOPER</span><span>CREATIVE</span><span>BUILDER</span>
+        <span>DEVELOPER</span><span>CREATIVE</span><span>BUILDER</span>
+      </div>
+    </div>
+  </div>
+  <span class="hero-side-label left hero-enter" style="animation-delay:.5s">Web Developer 2026</span>
+  <span class="hero-side-label right hero-enter" style="animation-delay:.6s">Scroll to explore</span>
+  <div class="hero-center">
+    <div class="mask-reveal-wrap" id="maskWrap">
+      <img class="mask-img hero-enter-img" src="uploads/IMG_2237.png" alt="Akane" id="imgBase" />
+      <img class="mask-img mask-img-top hero-enter-img" src="uploads/IMG_2599 - April 20, 2026 00.30.08.png" alt="Akane" id="imgTop" style="animation-delay:.5s" />
+    </div>
+  </div>
+  <div class="hero-tagline hero-enter" style="animation-delay:.7s">
+    <h1>Building the web, one line at a time</h1>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-big-title reveal">ABOUT ME</div>
+  <div class="about-stage">
+    <div class="about-left reveal">
+      <div class="about-name">Akane</div>
+      <p class="about-desc">I'm learning web development with Claude — turning curiosity and creativity into real, working things on the internet. Great websites aren't just built with code; they're built with personality.</p>
+      <p class="about-desc">Former lacrosse player. Problem solver at heart.</p>
+      <a href="#contact" class="about-cta">Contact</a>
+      <img class="about-lacrosse" src="uploads/FF2E8A51-E688-4534-862C-32D0496CAC10.png" alt="lacrosse" />
+    </div>
+    <img class="about-center-photo" src="uploads/selphotomo-49.png" alt="Akane" />
+    <div class="about-right reveal">
+      <span class="about-tool-label">Framer / Canva</span>
+      <div class="about-role">Web<br>Developer</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label reveal">What I Can Do</div>
+  <div class="skills-grid">
+    <div class="skill-card reveal-scale" style="transition-delay:.0s">
+      <div class="skill-num">01</div>
+      <div class="skill-name">HTML & CSS</div>
+      <div class="skill-desc">Crafting semantic markup and expressive styles. I care about layout, spacing, and the details that make a page feel polished.</div>
+      <div class="skill-tags"><span class="skill-tag">HTML5</span><span class="skill-tag">CSS Grid</span><span class="skill-tag">Flexbox</span><span class="skill-tag">Animations</span></div>
+    </div>
+    <div class="skill-card reveal-scale" style="transition-delay:.08s">
+      <div class="skill-num">02</div>
+      <div class="skill-name">JavaScript</div>
+      <div class="skill-desc">Making things interactive and alive. From DOM manipulation to async logic — learning to make the browser do what I want.</div>
+      <div class="skill-tags"><span class="skill-tag">ES6+</span><span class="skill-tag">DOM API</span><span class="skill-tag">Fetch</span><span class="skill-tag">Events</span></div>
+    </div>
+    <div class="skill-card reveal-scale" style="transition-delay:.16s">
+      <div class="skill-num">03</div>
+      <div class="skill-name">React</div>
+      <div class="skill-desc">Building component-based UIs with hooks and state. Turning ideas into reusable, interactive pieces that scale.</div>
+      <div class="skill-tags"><span class="skill-tag">Components</span><span class="skill-tag">Hooks</span><span class="skill-tag">State</span></div>
+    </div>
+    <div class="skill-card reveal-scale" style="transition-delay:.24s">
+      <div class="skill-num">04</div>
+      <div class="skill-name">AI-Assisted Dev</div>
+      <div class="skill-desc">Working with Claude to build, debug, and iterate fast. Using AI as a superpower to go from idea to prototype in hours.</div>
+      <div class="skill-tags"><span class="skill-tag">Claude</span><span class="skill-tag">Prompt Eng.</span><span class="skill-tag">Rapid Build</span></div>
+    </div>
+    <div class="skill-card reveal-scale" style="transition-delay:.32s">
+      <div class="skill-num">05</div>
+      <div class="skill-name">Design Sense</div>
+      <div class="skill-desc">A sharp eye for what looks good. Typography, color, whitespace — I care about the experience, not just the function.</div>
+      <div class="skill-tags"><span class="skill-tag">Typography</span><span class="skill-tag">Color</span><span class="skill-tag">UX</span></div>
+    </div>
+    <div class="skill-card reveal-scale" style="transition-delay:.40s">
+      <div class="skill-num">06</div>
+      <div class="skill-name">Fast Learner</div>
+      <div class="skill-desc">I went from zero to building full portfolio sites with animations. The learning curve is just another hill to sprint up.</div>
+      <div class="skill-tags"><span class="skill-tag">Growth</span><span class="skill-tag">Resilient</span><span class="skill-tag">Curious</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLVE -->
+<section id="solve">
+  <div class="solve-header">
+    <h2 class="solve-headline reveal">What<br>I Can<br>Solve.</h2>
+    <p class="solve-sub reveal">Click each to see what I can do — and let's talk.</p>
+  </div>
+  <div class="solve-list">
+    <div class="solve-item reveal" data-idx="0">
+      <div class="solve-item-header">
+        <span class="solve-item-num">01</span>
+        <span class="solve-item-title">You need a website but don't know where to start</span>
+        <span class="solve-item-arrow">›</span>
+      </div>
+      <div class="solve-item-body">
+        <div class="solve-item-body-inner">
+          <ul class="solve-item-bullets">
+            <li>Turn your rough idea into a clear site structure and wireframe</li>
+            <li>Build a polished, responsive site from scratch</li>
+            <li>Set up hosting and deployment so it's actually live</li>
+          </ul>
+          <a href="#contact-form" class="solve-item-cta">Let's talk about this →</a>
+        </div>
+      </div>
+    </div>
+    <div class="solve-item reveal" data-idx="1">
+      <div class="solve-item-header">
+        <span class="solve-item-num">02</span>
+        <span class="solve-item-title">Your current site looks outdated</span>
+        <span class="solve-item-arrow">›</span>
+      </div>
+      <div class="solve-item-body">
+        <div class="solve-item-body-inner">
+          <ul class="solve-item-bullets">
+            <li>Redesign with modern layout, fonts, and color</li>
+            <li>Add smooth animations and interactions</li>
+            <li>Optimize for mobile and fast loading</li>
+          </ul>
+          <a href="#contact-form" class="solve-item-cta">Let's talk about this →</a>
+        </div>
+      </div>
+    </div>
+    <div class="solve-item reveal" data-idx="2">
+      <div class="solve-item-header">
+        <span class="solve-item-num">03</span>
+        <span class="solve-item-title">You have an idea but no prototype</span>
+        <span class="solve-item-arrow">›</span>
+      </div>
+      <div class="solve-item-body">
+        <div class="solve-item-body-inner">
+          <ul class="solve-item-bullets">
+            <li>Rapidly build clickable, interactive prototypes</li>
+            <li>Validate your concept before investing in full dev</li>
+            <li>Present something real to stakeholders or investors</li>
+          </ul>
+          <a href="#contact-form" class="solve-item-cta">Let's talk about this →</a>
+        </div>
+      </div>
+    </div>
+    <div class="solve-item reveal" data-idx="3">
+      <div class="solve-item-header">
+        <span class="solve-item-num">04</span>
+        <span class="solve-item-title">You need someone who gets both design + code</span>
+        <span class="solve-item-arrow">›</span>
+      </div>
+      <div class="solve-item-body">
+        <div class="solve-item-body-inner">
+          <ul class="solve-item-bullets">
+            <li>Bridge the gap between designer vision and dev reality</li>
+            <li>Implement pixel-accurate layouts from Figma or Canva</li>
+            <li>Bring a taste for detail that purely technical devs often skip</li>
+          </ul>
+          <a href="#contact-form" class="solve-item-cta">Let's talk about this →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <!-- Photo hero -->
+  <div class="contact-photo-section">
+    <div class="contact-bg" id="contactBg"></div>
+    <div class="contact-overlay"></div>
+    <div class="contact-photo-content">
+      <h2 class="contact-headline reveal">Let's<br>Build<br>Together.</h2>
+      <p class="contact-sub reveal">I'm open to projects, collabs, internships, and anything that helps me grow as a developer.</p>
+      <a href="#contact-form" class="contact-btn reveal">Say Hello →</a>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <div class="contact-form-section" id="contact-form">
+    <div class="section-label" style="color:rgba(237,240,244,.3)">Get in Touch</div>
+    <div class="form-grid">
+      <div class="form-lead reveal">
+        <div class="form-lead-title">Send me<br>a message.</div>
+        <p class="form-lead-desc">Whether it's a project idea, a question, or just saying hi — I'd love to hear from you. I'll get back to you within 24 hours.</p>
+        <div class="contact-links">
+          <a href="#" class="contact-link">GitHub</a>
+          <a href="#" class="contact-link">Twitter</a>
+          <a href="#" class="contact-link">LinkedIn</a>
+        </div>
+      </div>
+      <form class="reveal" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-field">
+            <label>Name</label>
+            <input type="text" placeholder="Your name" required />
+          </div>
+          <div class="form-field">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com" required />
+          </div>
+        </div>
+        <div class="form-field">
+          <label>What can I help with?</label>
+          <select>
+            <option value="" disabled selected>Select a topic</option>
+            <option>Build a website from scratch</option>
+            <option>Redesign an existing site</option>
+            <option>Build a prototype</option>
+            <option>Design + code bridging</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Message</label>
+          <textarea placeholder="Tell me about your project, idea, or just say hi!"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message →</button>
+        <div class="form-success" id="formSuccess">
+          🎉 Thanks for reaching out! I'll get back to you soon.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Akane</span>
+  <span>Built with Claude ✦ Web Developer in Progress</span>
+</footer>
+
+<script>
+// CURSOR
+const cursor = document.getElementById('cursor');
+let mx = 0, my = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top = my + 'px';
+});
+document.querySelectorAll('a, button, .solve-item').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('large'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('large'));
+});
+
+// MASK REVEAL
+const wrap = document.getElementById('maskWrap');
+const imgTop = document.getElementById('imgTop');
+let maskRadius = 0, targetRadius = 0, animFrame;
+function lerp(a,b,t){ return a+(b-a)*t; }
+function animateMask(){
+  maskRadius = lerp(maskRadius, targetRadius, 0.1);
+  const rect = wrap.getBoundingClientRect();
+  const px = mx - rect.left, py = my - rect.top;
+  const m = `radial-gradient(circle ${maskRadius}px at ${px}px ${py}px, black 60%, transparent 100%)`;
+  imgTop.style.webkitMaskImage = m;
+  imgTop.style.maskImage = m;
+  animFrame = requestAnimationFrame(animateMask);
+}
+wrap.addEventListener('mouseenter', () => { targetRadius = 220; if(!animFrame) animateMask(); cursor.classList.add('large'); });
+wrap.addEventListener('mouseleave', () => { targetRadius = 0; cursor.classList.remove('large'); });
+
+// SOLVE ACCORDION
+document.querySelectorAll('.solve-item').forEach(item => {
+  item.querySelector('.solve-item-header').addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.solve-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// SOLVE CTA scroll
+document.querySelectorAll('.solve-item-cta').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// CONTACT PARALLAX
+const contactBg = document.getElementById('contactBg');
+window.addEventListener('scroll', () => {
+  const section = contactBg.closest('.contact-photo-section');
+  const rect = section.getBoundingClientRect();
+  const ratio = -rect.top / window.innerHeight;
+  contactBg.style.transform = `translateY(${ratio * 40}px) scale(1.1)`;
+});
+
+// SCROLL REVEAL
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const siblings = [...e.target.parentElement.querySelectorAll('.reveal, .reveal-scale')];
+      const idx = siblings.indexOf(e.target);
+      setTimeout(() => e.target.classList.add('visible'), idx * 90);
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObs.observe(el));
+
+// FORM SUBMIT
+function handleSubmit(e) {
+  e.preventDefault();
+  const success = document.getElementById('formSuccess');
+  success.classList.add('show');
+  e.target.querySelector('button').style.display = 'none';
+  setTimeout(() => {
+    success.classList.remove('show');
+    e.target.querySelector('button').style.display = '';
+    e.target.reset();
+  }, 4000);
+}
+</script>
+</body>
+</html>
