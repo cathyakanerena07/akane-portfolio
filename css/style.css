@@ -803,3 +803,116 @@ footer span { font-size: 12px; color: rgba(237,240,244,.25); letter-spacing: .06
   transition: opacity .6s ease, transform .6s ease;
 }
 .reveal-scale.visible { opacity: 1; transform: translateY(0) scale(1); }
+
+/* ── RESPONSIVE ── */
+
+/* タッチデバイス：カーソル復元・マスクリビール常時表示 */
+@media (hover: none) {
+  body { cursor: auto; }
+  #cursor { display: none; }
+  .nav-contact,
+  .solve-item,
+  .form-field input,
+  .form-field textarea,
+  .form-field select,
+  .form-submit { cursor: auto; }
+  .mask-img-top {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+}
+
+/* ── タブレット（〜768px）── */
+@media (max-width: 768px) {
+  /* Nav */
+  nav { padding: 0 20px; }
+
+  /* Hero */
+  .hero-side-label { display: none; }
+  .scroll-hint { right: 16px; bottom: 24px; }
+  .mask-reveal-wrap { width: 90vw; }
+  .hero-tagline h1 { font-size: clamp(11px, 3vw, 16px); }
+
+  /* About */
+  .about-big-title { padding: 24px 0 0; }
+  .about-stage {
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+    align-items: center;
+    padding: 0 24px 48px;
+  }
+  .about-left {
+    position: static;
+    width: 100%;
+    padding: 24px 0 0;
+    align-self: auto;
+    order: 2;
+  }
+  .about-center-photo {
+    position: static;
+    left: auto;
+    transform: none;
+    animation: none;
+    height: 55vw;
+    max-width: 75%;
+    display: block;
+    margin: 0 auto;
+    order: 1;
+  }
+  .about-right { display: none; }
+  .about-desc { max-width: 100%; }
+
+  /* Skills */
+  #skills { padding: 64px 24px; }
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 32px;
+  }
+  .skill-card { padding: 28px 22px; }
+
+  /* Solve */
+  #solve { padding: 64px 24px; }
+  .solve-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .solve-sub { max-width: 100%; }
+  .solve-item-header {
+    padding: 20px 16px;
+    grid-template-columns: 36px 1fr auto;
+    gap: 10px;
+  }
+  .solve-item-title { font-size: 20px; }
+  .solve-item-body-inner { padding: 0 16px 24px 46px; }
+
+  /* Contact */
+  .contact-photo-section { min-height: 400px; }
+  .contact-form-section { padding: 64px 24px; }
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 40px;
+  }
+  .form-row { grid-template-columns: 1fr; }
+
+  /* Footer */
+  footer { padding: 20px 24px; }
+}
+
+/* ── スマートフォン（〜480px）── */
+@media (max-width: 480px) {
+  /* Skills: 1列に */
+  .skills-grid { grid-template-columns: 1fr; }
+
+  /* Solve */
+  .solve-item-title { font-size: 18px; }
+  .solve-item-header { padding: 16px 14px; gap: 8px; }
+  .solve-item-body-inner { padding: 0 14px 20px 40px; }
+
+  /* Hero tagline */
+  .hero-tagline { bottom: 32px; }
+  .hero-tagline h1 { letter-spacing: .18em; }
+}
