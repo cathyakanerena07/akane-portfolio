@@ -105,6 +105,7 @@ nav {
   left: 0; right: 0;
   overflow: hidden;
   user-select: none;
+  z-index: 0;
 }
 .marquee-fade {
   animation: fadeInOnly .8s ease forwards;
@@ -126,7 +127,7 @@ nav {
 .marquee-row span {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
-  font-size: clamp(80px, 12vw, 160px);
+  font-size: clamp(160px, 22vw, 280px);
   line-height: .9;
   color: var(--navy);
   padding: 0 24px;
@@ -150,7 +151,7 @@ nav {
   align-items: flex-end;
   justify-content: center;
   position: relative;
-  z-index: 2;
+  z-index: 2; /* photo stays above marquee text (z-index: 0) */
 }
 .mask-reveal-wrap {
   position: relative;
@@ -167,7 +168,7 @@ nav {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  height: min(72vh, 640px);
+  height: min(88vh, 800px);
   width: auto;
   object-fit: contain;
   object-position: bottom center;
