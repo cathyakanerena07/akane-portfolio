@@ -42,12 +42,6 @@ wrap.addEventListener('mouseleave', () => {
   cursor.classList.remove('large');
 });
 
-/* タッチ：タップで現在の茜をフェードイン/アウト */
-wrap.addEventListener('click', () => {
-  if (window.matchMedia('(hover: none)').matches) {
-    imgTop.classList.toggle('revealed');
-  }
-});
 
 /* ── SOLVE ACCORDION ── */
 document.querySelectorAll('.solve-item').forEach(item => {

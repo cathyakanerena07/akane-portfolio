@@ -816,13 +816,7 @@ footer span { font-size: 12px; color: rgba(237,240,244,.25); letter-spacing: .06
   .form-field textarea,
   .form-field select,
   .form-submit { cursor: auto; }
-  .mask-img-top {
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-    opacity: 0;
-    transition: opacity .5s ease;
-  }
-  .mask-img-top.revealed { opacity: 1; }
+  .mask-img-top { display: none; }
 }
 
 /* ── タブレット（〜768px）── */
