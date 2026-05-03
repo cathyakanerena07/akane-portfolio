@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akane — Web Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="cursor"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-icon">
+      <img class="img-default" src="project/uploads/IMG_4373.png" alt="logo" />
+      <img class="img-hover"   src="project/uploads/IMG_4372.png" alt="logo hover" />
+    </div>
+    <span class="nav-logo-name">AKANE</span>
+  </a>
+  <a href="#contact" class="nav-contact">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="marquee-wrap" style="top: 56px;">
+    <div class="marquee-fade">
+      <div class="marquee-row">
+        <span>AKANE</span><span>PORTFOLIO</span><span>WEB DEV</span>
+        <span>AKANE</span><span>PORTFOLIO</span><span>WEB DEV</span>
+        <span>AKANE</span><span>PORTFOLIO</span><span>WEB DEV</span>
+        <span>AKANE</span><span>PORTFOLIO</span><span>WEB DEV</span>
+      </div>
+    </div>
+  </div>
+  <div class="marquee-wrap" style="top: calc(56px + clamp(72px, 10.8vw, 144px));">
+    <div class="marquee-fade rev">
+      <div class="marquee-row rev">
+        <span>DEVELOPER</span><span>CREATIVE</span><span>BUILDER</span>
+        <span>DEVELOPER</span><span>CREATIVE</span><span>BUILDER</span>
+        <span>DEVELOPER</span><span>CREATIVE</span><span>BUILDER</span>
+        <span>DEVELOPER</span><span>CREATIVE</span><span>BUILDER</span>
+      </div>
+    </div>
+  </div>
+
+  <span class="hero-side-label left  hero-enter" style="animation-delay:.5s">Web Developer 2026</span>
+  <span class="hero-side-label right hero-enter" style="animation-delay:.6s">Scroll to explore</span>
+
+  <div class="hero-center">
+    <div class="mask-reveal-wrap" id="maskWrap">
+      <img class="mask-img hero-enter-img"
+           src="project/uploads/IMG_2237.png"
+           alt="Akane — childhood"
+           id="imgBase" />
+      <img class="mask-img mask-img-top hero-enter-img"
+           src="project/uploads/IMG_2599 - April 20, 2026 00.30.08.png"
+           alt="Akane"
+           id="imgTop"
+           style="animation-delay:.5s" />
+    </div>
+  </div>
+
+  <div class="hero-tagline hero-enter" style="animation-delay:.7s">
+    <h1>Building the web, one line at a time</h1>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-big-title reveal">ABOUT ME</div>
+  <div class="about-stage">
+    <div class="about-left reveal">
+      <div class="about-name">Akane</div>
+      <p class="about-desc">I'm learning web development with Claude — turning curiosity and creativity into real, working things on the internet. Great websites aren't just built with code; they're built with personality.</p>
+      <p class="about-desc">Former lacrosse player. Problem solver at heart.</p>
+      <a href="#contact" class="about-cta">Contact</a>
+      <img class="about-lacrosse" src="project/uploads/FF2E8A51-E688-4534-862C-32D0496CAC10.png" alt="lacrosse" />
+    </div>
+    <img class="about-center-photo" src="project/uploads/selphotomo-49.png" alt="Akane" />
+    <div class="about-right reveal">
+      <span class="about-tool-label">Framer / Canva</span>
+      <div class="about-role">Web<br>Developer</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label reveal">What I Can Do</div>
+  <div class="skills-grid">
+    <div class="skill-card reveal-scale" style="transition-delay:.00s">
+      <div class="skill-num">01</div>
+      <div class="skill-name">HTML &amp; CSS</div>
+      <div class="skill-desc">Crafting semantic markup and expressive styles. I care about layout, spacing, and the details that make a page feel polished.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">HTML5</span>
+        <span class="skill-tag">CSS Grid</span>
+        <span class="skill-tag">Flexbox</span>
+        <span class="skill-tag">Animations</span>
+      </div>
+    </div>
+    <div class="skill-card reveal-scale" style="transition-delay:.08s">
+      <div class="skill-num">02</div>
+      <div class="skill-name">JavaScript</div>
+      <div class="skill-desc">Making things interactive and alive. From DOM manipulation to async logic — learning to make the browser do what I want.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">ES6+</span>
+        <span class="skill-tag">DOM API</span>
+        <span class="skill-tag">Fetch</span>
+        <span class="skill-tag">Events</span>
+      </div>
+    </div>
+    <div class="skill-card reveal-scale" style="transition-delay:.16s">
+      <div class="skill-num">03</div>
+      <div class="skill-name">React</div>
+      <div class="skill-desc">Building component-based UIs with hooks and state. Turning ideas into reusable, interactive pieces that scale.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Components</span>
+        <span class="skill-tag">Hooks</span>
+        <span class="skill-tag">State</span>
+      </div>
+    </div>
+    <div class="skill-card reveal-scale" style="transition-delay:.24s">
+      <div class="skill-num">04</div>
+      <div class="skill-name">AI-Assisted Dev</div>
+      <div class="skill-desc">Working with Claude to build, debug, and iterate fast. Using AI as a superpower to go from idea to prototype in hours.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Claude</span>
+        <span class="skill-tag">Prompt Eng.</span>
+        <span class="skill-tag">Rapid Build</span>
+      </div>
+    </div>
+    <div class="skill-card reveal-scale" style="transition-delay:.32s">
+      <div class="skill-num">05</div>
+      <div class="skill-name">Design Sense</div>
+      <div class="skill-desc">A sharp eye for what looks good. Typography, color, whitespace — I care about the experience, not just the function.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Typography</span>
+        <span class="skill-tag">Color</span>
+        <span class="skill-tag">UX</span>
+      </div>
+    </div>
+    <div class="skill-card reveal-scale" style="transition-delay:.40s">
+      <div class="skill-num">06</div>
+      <div class="skill-name">Fast Learner</div>
+      <div class="skill-desc">I went from zero to building full portfolio sites with animations. The learning curve is just another hill to sprint up.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Growth</span>
+        <span class="skill-tag">Resilient</span>
+        <span class="skill-tag">Curious</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT I CAN SOLVE -->
+<section id="solve">
+  <div class="solve-header">
+    <h2 class="solve-headline reveal">What<br>I Can<br>Solve.</h2>
+    <p class="solve-sub reveal">Click each to see what I can do — and let's talk.</p>
+  </div>
+  <div class="solve-list">
+    <div class="solve-item reveal">
+      <div class="solve-item-header">
+        <span class="solve-item-num">01</span>
+        <span class="solve-item-title">You need a website but don't know where to start</span>
+        <span class="solve-item-arrow">›</span>
+      </div>
+      <div class="solve-item-body">
+        <div class="solve-item-body-inner">
+          <ul class="solve-item-bullets">
+            <li>Turn your rough idea into a clear site structure and wireframe</li>
+            <li>Build a polished, responsive site from scratch</li>
+            <li>Set up hosting and deployment so it's actually live</li>
+          </ul>
+          <a href="#contact-form" class="solve-item-cta">Let's talk about this →</a>
+        </div>
+      </div>
+    </div>
+    <div class="solve-item reveal">
+      <div class="solve-item-header">
+        <span class="solve-item-num">02</span>
+        <span class="solve-item-title">Your current site looks outdated</span>
+        <span class="solve-item-arrow">›</span>
+      </div>
+      <div class="solve-item-body">
+        <div class="solve-item-body-inner">
+          <ul class="solve-item-bullets">
+            <li>Redesign with modern layout, fonts, and color</li>
+            <li>Add smooth animations and interactions</li>
+            <li>Optimize for mobile and fast loading</li>
+          </ul>
+          <a href="#contact-form" class="solve-item-cta">Let's talk about this →</a>
+        </div>
+      </div>
+    </div>
+    <div class="solve-item reveal">
+      <div class="solve-item-header">
+        <span class="solve-item-num">03</span>
+        <span class="solve-item-title">You have an idea but no prototype</span>
+        <span class="solve-item-arrow">›</span>
+      </div>
+      <div class="solve-item-body">
+        <div class="solve-item-body-inner">
+          <ul class="solve-item-bullets">
+            <li>Rapidly build clickable, interactive prototypes</li>
+            <li>Validate your concept before investing in full dev</li>
+            <li>Present something real to stakeholders or investors</li>
+          </ul>
+          <a href="#contact-form" class="solve-item-cta">Let's talk about this →</a>
+        </div>
+      </div>
+    </div>
+    <div class="solve-item reveal">
+      <div class="solve-item-header">
+        <span class="solve-item-num">04</span>
+        <span class="solve-item-title">You need someone who gets both design + code</span>
+        <span class="solve-item-arrow">›</span>
+      </div>
+      <div class="solve-item-body">
+        <div class="solve-item-body-inner">
+          <ul class="solve-item-bullets">
+            <li>Bridge the gap between designer vision and dev reality</li>
+            <li>Implement pixel-accurate layouts from Figma or Canva</li>
+            <li>Bring a taste for detail that purely technical devs often skip</li>
+          </ul>
+          <a href="#contact-form" class="solve-item-cta">Let's talk about this →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <!-- Photo hero -->
+  <div class="contact-photo-section">
+    <div class="contact-bg" id="contactBg"></div>
+    <div class="contact-overlay"></div>
+    <div class="contact-photo-content">
+      <h2 class="contact-headline reveal">Let's<br>Build<br>Together.</h2>
+      <p class="contact-sub reveal">I'm open to projects, collabs, internships, and anything that helps me grow as a developer.</p>
+      <a href="#contact-form" class="contact-btn reveal">Say Hello →</a>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <div class="contact-form-section" id="contact-form">
+    <div class="section-label" style="color:rgba(237,240,244,.3)">Get in Touch</div>
+    <div class="form-grid">
+      <div class="form-lead reveal">
+        <div class="form-lead-title">Send me<br>a message.</div>
+        <p class="form-lead-desc">Whether it's a project idea, a question, or just saying hi — I'd love to hear from you. I'll get back to you within 24 hours.</p>
+        <div class="contact-links">
+          <a href="#" class="contact-link">GitHub</a>
+          <a href="#" class="contact-link">Twitter</a>
+          <a href="#" class="contact-link">LinkedIn</a>
+        </div>
+      </div>
+      <form class="reveal" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-field">
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-field">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="your@email.com" required />
+          </div>
+        </div>
+        <div class="form-field">
+          <label>What can I help with?</label>
+          <select name="topic">
+            <option value="" disabled selected>Select a topic</option>
+            <option>Build a website from scratch</option>
+            <option>Redesign an existing site</option>
+            <option>Build a prototype</option>
+            <option>Design + code bridging</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Message</label>
+          <textarea name="message" placeholder="Tell me about your project, idea, or just say hi!"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message →</button>
+        <div class="form-success" id="formSuccess">
+          Thanks for reaching out! I'll get back to you soon.
+        </div>
+        <div class="form-error" id="formError">
+          Something went wrong. Please try again or email me directly.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Akane</span>
+  <span></span>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
