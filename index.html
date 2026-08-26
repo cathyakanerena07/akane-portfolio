@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Akane — Web Developer</title>
+  <meta name="description" content="Akane — web developer who designs and ships fast, responsive websites and web apps. Selected work, skills, and contact.">
+  <meta property="og:title" content="Akane — Web Developer">
+  <meta property="og:description" content="I design and build fast, responsive websites and web apps — from concept to live deployment.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#1e2d5a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
@@ -20,7 +25,14 @@
     </div>
     <span class="nav-logo-name">AKANE</span>
   </a>
-  <a href="#contact" class="nav-contact">Contact</a>
+  <div class="nav-actions">
+    <a href="#work" class="nav-link">Work</a>
+    <a href="https://github.com/cathyakanerena07" target="_blank" rel="noopener" class="nav-github" aria-label="GitHub profile">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+      <span>GitHub</span>
+    </a>
+    <a href="#contact" class="nav-contact">Contact</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -79,14 +91,14 @@
   <div class="about-stage">
     <div class="about-left reveal">
       <div class="about-name">Akane</div>
-      <p class="about-desc">I'm learning web development with Claude — turning curiosity and creativity into real, working things on the internet. Great websites aren't just built with code; they're built with personality.</p>
+      <p class="about-desc">I design and build websites end to end — from the first concept to a fast, responsive site that's live and working on the internet. Clean code, sharp design, and an eye for the details that make a page feel finished.</p>
       <p class="about-desc">Former lacrosse player. Problem solver at heart.</p>
       <a href="#contact" class="about-cta">Contact</a>
       <img class="about-lacrosse" src="project/uploads/FF2E8A51-E688-4534-862C-32D0496CAC10.png" alt="lacrosse" />
     </div>
-    <img class="about-center-photo" src="project/uploads/selphotomo-49.png" alt="Akane" />
+    <img class="about-center-photo" src="assets/akane-cutout.png" alt="Akane" />
     <div class="about-right reveal">
-      <span class="about-tool-label">Framer / Canva</span>
+      <span class="about-tool-label">Next.js / React</span>
       <div class="about-role">Web<br>Developer</div>
     </div>
   </div>
@@ -150,14 +162,157 @@
     </div>
     <div class="skill-card reveal-scale" style="transition-delay:.40s">
       <div class="skill-num">06</div>
-      <div class="skill-name">Fast Learner</div>
-      <div class="skill-desc">I went from zero to building full portfolio sites with animations. The learning curve is just another hill to sprint up.</div>
+      <div class="skill-name">Ship Fast</div>
+      <div class="skill-desc">I take projects from idea to deployed — full sites with animations, live on the web in days, not months. Rapid iteration, real results.</div>
       <div class="skill-tags">
-        <span class="skill-tag">Growth</span>
-        <span class="skill-tag">Resilient</span>
-        <span class="skill-tag">Curious</span>
+        <span class="skill-tag">Speed</span>
+        <span class="skill-tag">Delivery</span>
+        <span class="skill-tag">Ownership</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="work-header">
+    <div>
+      <div class="section-label reveal">Selected Work</div>
+      <h2 class="work-headline reveal">Things I've<br>built &amp; shipped.</h2>
+    </div>
+    <p class="work-intro reveal">A selection of live websites and apps — from brand landing pages to full web apps. Every one is designed, coded, and deployed by me. Click any card to explore it live.</p>
+  </div>
+
+  <div class="work-grid">
+
+    <article class="work-card reveal">
+      <a class="work-thumb" href="https://ephemere-paris.vercel.app" target="_blank" rel="noopener">
+        <img src="assets/work/ephemere-paris.png" alt="Éphémère Paris website" loading="lazy" />
+        <span class="work-thumb-cta">View live ↗</span>
+      </a>
+      <div class="work-info">
+        <div class="work-titlerow"><h3 class="work-title">Éphémère Paris</h3><span class="work-year">’26</span></div>
+        <p class="work-desc">A fashion editorial landing page — full-bleed imagery, refined type, and cinematic motion.</p>
+        <div class="work-meta">
+          <div class="work-tags"><span class="work-tag">Next.js</span><span class="work-tag">Motion</span><span class="work-tag">Editorial</span></div>
+          <div class="work-links"><a href="https://ephemere-paris.vercel.app" target="_blank" rel="noopener" class="work-link">Live</a><a href="https://github.com/cathyakanerena07/ephemere-paris" target="_blank" rel="noopener" class="work-link ghost">Code</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="work-card reveal">
+      <a class="work-thumb" href="https://void-gray-pi.vercel.app" target="_blank" rel="noopener">
+        <img src="assets/work/void.png" alt="Void creative studio website" loading="lazy" />
+        <span class="work-thumb-cta">View live ↗</span>
+      </a>
+      <div class="work-info">
+        <div class="work-titlerow"><h3 class="work-title">Void</h3><span class="work-year">’26</span></div>
+        <p class="work-desc">A bold creative-studio site with a striking hero and expressive, high-contrast art direction.</p>
+        <div class="work-meta">
+          <div class="work-tags"><span class="work-tag">Next.js</span><span class="work-tag">Motion</span><span class="work-tag">Studio</span></div>
+          <div class="work-links"><a href="https://void-gray-pi.vercel.app" target="_blank" rel="noopener" class="work-link">Live</a><a href="https://github.com/cathyakanerena07/void-studio" target="_blank" rel="noopener" class="work-link ghost">Code</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="work-card reveal">
+      <a class="work-thumb" href="https://kiln-tawny.vercel.app" target="_blank" rel="noopener">
+        <img src="assets/work/kiln.png" alt="Kiln motion studio website" loading="lazy" />
+        <span class="work-thumb-cta">View live ↗</span>
+      </a>
+      <div class="work-info">
+        <div class="work-titlerow"><h3 class="work-title">Kiln</h3><span class="work-year">’26</span></div>
+        <p class="work-desc">A motion-studio site built around scroll-driven animation and warm, tactile branding.</p>
+        <div class="work-meta">
+          <div class="work-tags"><span class="work-tag">Next.js</span><span class="work-tag">Scroll FX</span><span class="work-tag">Branding</span></div>
+          <div class="work-links"><a href="https://kiln-tawny.vercel.app" target="_blank" rel="noopener" class="work-link">Live</a><a href="https://github.com/cathyakanerena07/kiln-motion-studio" target="_blank" rel="noopener" class="work-link ghost">Code</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="work-card reveal">
+      <a class="work-thumb" href="https://mun-hazel.vercel.app" target="_blank" rel="noopener">
+        <img src="assets/work/mun.png" alt="MÛN fragrance website" loading="lazy" />
+        <span class="work-thumb-cta">View live ↗</span>
+      </a>
+      <div class="work-info">
+        <div class="work-titlerow"><h3 class="work-title">MÛN</h3><span class="work-year">’26</span></div>
+        <p class="work-desc">A fragrance brand concept — soft, tactile, and quietly luxurious eau-de-parfum storytelling.</p>
+        <div class="work-meta">
+          <div class="work-tags"><span class="work-tag">Next.js</span><span class="work-tag">Motion</span><span class="work-tag">Brand</span></div>
+          <div class="work-links"><a href="https://mun-hazel.vercel.app" target="_blank" rel="noopener" class="work-link">Live</a><a href="https://github.com/cathyakanerena07/mun" target="_blank" rel="noopener" class="work-link ghost">Code</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="work-card reveal">
+      <a class="work-thumb" href="https://rouge-nuit.vercel.app" target="_blank" rel="noopener">
+        <img src="assets/work/rouge-nuit.png" alt="Rouge Nuit cosmetics website" loading="lazy" />
+        <span class="work-thumb-cta">View live ↗</span>
+      </a>
+      <div class="work-info">
+        <div class="work-titlerow"><h3 class="work-title">Rouge Nuit</h3><span class="work-year">’26</span></div>
+        <p class="work-desc">A cosmetics landing page with dark-romance art direction and a single, confident hero product.</p>
+        <div class="work-meta">
+          <div class="work-tags"><span class="work-tag">Next.js</span><span class="work-tag">Motion</span><span class="work-tag">Beauty</span></div>
+          <div class="work-links"><a href="https://rouge-nuit.vercel.app" target="_blank" rel="noopener" class="work-link">Live</a><a href="https://github.com/cathyakanerena07/rouge-nuit" target="_blank" rel="noopener" class="work-link ghost">Code</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="work-card reveal">
+      <a class="work-thumb" href="https://velora-wedding.vercel.app" target="_blank" rel="noopener">
+        <img src="assets/work/velora-wedding.png" alt="Velora Wedding website" loading="lazy" />
+        <span class="work-thumb-cta">View live ↗</span>
+      </a>
+      <div class="work-info">
+        <div class="work-titlerow"><h3 class="work-title">Velora Wedding</h3><span class="work-year">’26</span></div>
+        <p class="work-desc">An elegant wedding-venue site — warm imagery, serif type, and a calm, romantic tone.</p>
+        <div class="work-meta">
+          <div class="work-tags"><span class="work-tag">Next.js</span><span class="work-tag">Elegant</span><span class="work-tag">Venue</span></div>
+          <div class="work-links"><a href="https://velora-wedding.vercel.app" target="_blank" rel="noopener" class="work-link">Live</a><a href="https://github.com/cathyakanerena07/velora-wedding" target="_blank" rel="noopener" class="work-link ghost">Code</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="work-card reveal app">
+      <a class="work-thumb" href="https://splitto-lovat.vercel.app" target="_blank" rel="noopener">
+        <img src="assets/work/splitto-mobile.png" alt="Splitto expense-splitting app" loading="lazy" />
+        <span class="work-thumb-cta">View live ↗</span>
+      </a>
+      <div class="work-info">
+        <div class="work-titlerow"><h3 class="work-title">Splitto</h3><span class="work-year">’26</span></div>
+        <p class="work-desc">A real web app for splitting group expenses across currencies, settled at the day's exchange rate.</p>
+        <div class="work-meta">
+          <div class="work-tags"><span class="work-tag">Next.js</span><span class="work-tag">Web App</span><span class="work-tag">Product</span></div>
+          <div class="work-links"><a href="https://splitto-lovat.vercel.app" target="_blank" rel="noopener" class="work-link">Live</a><a href="https://github.com/cathyakanerena07/splitto" target="_blank" rel="noopener" class="work-link ghost">Code</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="work-card reveal app">
+      <a class="work-thumb" href="https://match-vocab-public.vercel.app/" target="_blank" rel="noopener">
+        <img src="assets/work/vocabmatch-mobile.png" alt="Match — multilingual vocabulary app" loading="lazy" />
+        <span class="work-thumb-cta">View live ↗</span>
+      </a>
+      <div class="work-info">
+        <div class="work-titlerow"><h3 class="work-title">Match 単語帳</h3><span class="work-year">’26</span></div>
+        <p class="work-desc">A multilingual flashcard app — swipe to learn across 5 languages, with level-based decks and progress that saves on your device.</p>
+        <div class="work-meta">
+          <div class="work-tags"><span class="work-tag">Web App</span><span class="work-tag">5 Languages</span><span class="work-tag">EdTech</span></div>
+          <div class="work-links"><a href="https://match-vocab-public.vercel.app/" target="_blank" rel="noopener" class="work-link">Live</a><a href="https://github.com/cathyakanerena07/match-vocab-public" target="_blank" rel="noopener" class="work-link ghost">Code</a></div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="work-footer reveal">
+    <span>More on GitHub</span>
+    <a href="https://github.com/cathyakanerena07?tab=repositories" target="_blank" rel="noopener" class="work-github-btn">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+      View all repositories
+    </a>
   </div>
 </section>
 
@@ -247,7 +402,7 @@
     <div class="contact-overlay"></div>
     <div class="contact-photo-content">
       <h2 class="contact-headline reveal">Let's<br>Build<br>Together.</h2>
-      <p class="contact-sub reveal">I'm open to projects, collabs, internships, and anything that helps me grow as a developer.</p>
+      <p class="contact-sub reveal">I'm open to roles, freelance projects, and collaborations where I can design and ship great web experiences.</p>
       <a href="#contact-form" class="contact-btn reveal">Say Hello →</a>
     </div>
   </div>
@@ -303,8 +458,8 @@
 </section>
 
 <footer>
-  <span>© 2026 Akane</span>
-  <span></span>
+  <span>© 2026 Akane — Web Developer</span>
+  <a href="https://github.com/cathyakanerena07" target="_blank" rel="noopener" class="footer-link">GitHub ↗</a>
 </footer>
 
 <script src="js/main.js"></script>
